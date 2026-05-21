@@ -10,16 +10,16 @@ npm install @ceramicai/sdk ai @ai-sdk/openai
 
 ## Setup
 
-Get your free API key at [platform.ceramic.ai/keys](https://platform.ceramic.ai/keys) and add it to your `.env`:
+Get your free API key at [platform.ceramic.ai/keys](https://platform.ceramic.ai/keys) and export it:
 
 ```
-CERAMIC_API_KEY=your_api_key_here
+export CERAMIC_API_KEY=your_api_key
 ```
 
-Also add any additional API keys you need, e.g., OpenAI:
+Also export any additional API keys you need, e.g., OpenAI:
 
 ```
-OPENAI_API_KEY=your_api_key_here
+export OPENAI_API_KEY=your_api_key
 ```
 
 ## Example usage
@@ -41,7 +41,7 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-Save the file as `example.ts`. In the same directory, add the `.env` and create a `package.json` with:
+Save the file as `example.ts`. In the same directory, create a `package.json` with:
 
 ```json
 { "type": "module" }
@@ -50,7 +50,7 @@ Save the file as `example.ts`. In the same directory, add the `.env` and create 
 Then run:
 
 ```bash
-npx tsx --env-file=.env example.ts
+npx tsx example.ts
 ```
 
 ## Configuration
