@@ -36,15 +36,22 @@ export function ceramicSearch(config: CeramicSearchConfig = {}) {
 
   return tool({
     description:
-      'Search the web using Ceramic AI. Ceramic uses lexical (keyword) matching — NOT semantic search. ' +
-      'Rewrite the natural language query as 2–8 specific keywords before calling the search: ' +
-      'extract specific entities, topics, locations, and dates; ' +
-      'replace conversational phrasing with concrete keywords; ' +
-      'include relevant synonyms explicitly when terminology is ambiguous; ' +
-      'keep word order meaningful (house cat and cat house return different results). ' +
-      'Examples of good keyword queries: 2026 Super Bowl halftime performer, California tenant security deposit return law, Serena Williams Grand Slam titles.\n ' + 
-      'Call Ceramic search with the rewritten keyword query. ' + 
-      'The tool returns up to 10 results ranked by relevance, each with title, URL, and description.',
+      'Search the web using Ceramic. ' +
+      'Use for accurate current information — news, prices, recent events, documentation, general fact checking. ' +
+      'Returns up to 10 ranked results with titles, URLs, and descriptions. ' +
+      'Ceramic matches exact keywords — it does not interpret natural language or synonyms automatically. Call Ceramic search with a keyword query version of the user\'s question. ' +
+      'Keyword query conversion rules: \n' +
+      '- Queries must be 2-8 words\n' +
+      '- Extract specific entities, topics, locations, and dates\n' +
+      '- Replace conversational phrasing with concrete keywords\n' +
+      '- Do not include uninformative words such as articles (the, a, an). Avoid prepositions (on, about, in, for, of, at, by, with) unless they are within established phrases or names (United States of America, Into the Wild).\n' +
+      '- Include relevant synonyms explicitly when terminology is ambiguous\n' +
+      '- Keep word order meaningful (`house cat` and `cat house` return different results)\n' +
+      '- Good keyword query examples: \n' +
+      '    - "2026 Super Bowl halftime performer" \n' +
+      '    - "climate change effects global warming impact" \n' +
+      '    - "beginner investing strategies stocks bonds basics" \n' +
+      'If the search returns no useful results, retry with a more specific keyword query. ',
     inputSchema: z.object({
       query: z.string().describe('Keyword-based search query (2–8 words)'),
     }),
